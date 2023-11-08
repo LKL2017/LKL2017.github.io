@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.effect {
+    background-color: black;
+}
+
+.info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+@media (max-width: 600px) {
+    .info {
+        flex-flow: column nowrap;
+    }
+}
+
+.info > section {
+    position: relative;
+    width: min(460px, 30%);
+    height: 60%;
+    background-color: #363446;
+    cursor: pointer;
+    overflow: hidden;
+    transition: ease 0.3s;
+}
+
+.info > section:nth-child(2n+1):hover {
+    animation:
+        2s init-wave,
+        3s loop-waves 2s alternate infinite;
+}
+
+@keyframes init-wave {
+    to {
+        transform: perspective(600px) rotate3d(0, 1, 0, 10deg);
+    }
+}
+@keyframes loop-waves {
+    from {
+        transform: perspective(600px) rotate3d(0, 1, 0, 10deg);
+    }
+    to {
+        transform: perspective(600px) rotate3d(0, 1, 0, -10deg);
+    }
+}
+
+.info > section:nth-child(2n+1)::after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(-50deg) translateX(40%);
+    transform-origin: top left;
+    transition: all ease-in 0.3s;
+}
+
+.info > section:nth-child(2n+1):hover::after {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(-50deg) translateX(20%);
+}
+
+.info section .title {
+    color: azure;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-align: center;
+    padding: 0.5rem;
+}
