@@ -1,6 +1,6 @@
 const canvas = document.querySelector('#scene');
 const ctx = canvas.getContext('2d', { willReadFrequently: true});
-const section = document.querySelector('.container > section:nth-child(2)');
+const section = document.querySelector('.container > .effect-section');
 const rect = section.getBoundingClientRect();
 canvas.width = rect.width;
 canvas.height = rect.height;
@@ -150,7 +150,7 @@ function animate() {
 }
 
 window.addEventListener('resize', () => {
-  const rect = document.querySelector('.container > section').getBoundingClientRect();
+  const rect = document.querySelector('.container > .effect-section').getBoundingClientRect();
   canvas.width = rect.width;
   canvas.height = rect.height;
 })
