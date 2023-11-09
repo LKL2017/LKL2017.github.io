@@ -102,7 +102,8 @@ class Effect {
   }
 
   initPokemons () {
-    const promises = ['assets/images/1.png', 'assets/images/6.png'].map(src => {
+    const staticImages = ['assets/images/598.png', 'assets/images/146.png', 'assets/images/818.png'];
+    const promises = staticImages.map(src => {
       return new Promise(resolve => {
         const sprite = new Image();
         sprite.src = src;
@@ -141,7 +142,6 @@ effect.initParticles();
 let isRun = true;
 function animate() {
   if (!isRun) return;
-  // ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.globalAlpha = 0.02;
   ctx.fillStyle = 'black';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -156,15 +156,15 @@ window.addEventListener('resize', () => {
 })
 
 section.addEventListener('mouseenter', () => {
-  console.log('mouse enter');
   isRun = true;
   effect.initField().then(_ => animate());
 })
 
 section.addEventListener('mouseout', () => {
-  console.log('mouse out')
-  isRun = false;
-  effect.reset();
+  setTimeout(() => {
+    isRun = false;
+    effect.reset();
+  }, 500)
 })
 
 
