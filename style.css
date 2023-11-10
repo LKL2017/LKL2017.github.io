@@ -12,6 +12,33 @@
 
 .floor {
     background: black;
+    overflow: hidden;
+}
+
+.floor::after {
+    display: block;
+    background: linear-gradient(180deg, #676d55 0, #5f6b52 8.33%, #56684f 16.67%, #4c654b 25%, #406249 33.33%, #325e46 41.67%, #1f5944 50%, #005443 58.33%, #005044 66.67%, #004c46 75%, #004849 83.33%, #00454c 91.67%, #004250 100%);;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: scale(2);
+    transform-origin: center;
+    transition: all linear 0.5s;
+    animation: 6s bg-movement alternate infinite;
+}
+
+.floor.grass::after, .floor.flame::after, .floor.stream::after {
+    opacity: 0;
+}
+
+@keyframes bg-movement {
+    from {
+        transform: scale(2) translateY(-20%);
+    }
+    to {
+        transform: scale(2) translateY(20%);
+    }
 }
 
 .info a {
@@ -52,7 +79,7 @@
     animation:
         2s init-wave,
         3s loop-waves 2s alternate infinite;
-    box-shadow: aquamarine 0 0 5px 5px ;
+    box-shadow: aquamarine 0 0 10px 4px ;
 }
 
 @keyframes init-wave {

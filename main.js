@@ -149,6 +149,16 @@ function animate() {
   requestAnimationFrame(animate);
 }
 
+const floor = document.querySelector('.container.floor');
+const floorClasses = ['grass', 'flame', 'stream'];
+function changeFloor(index) {
+  if ([...floor.classList].some(name => floorClasses.indexOf(name) !== -1)) return;
+  floor.classList.add(floorClasses[index]);
+}
+function resetFloor(index) {
+  floor.classList.remove(floorClasses[index])
+}
+
 window.addEventListener('resize', () => {
   const rect = document.querySelector('.container > .effect-section').getBoundingClientRect();
   canvas.width = rect.width;
@@ -157,16 +167,19 @@ window.addEventListener('resize', () => {
 
 section.addEventListener('mouseenter', () => {
   isRun = true;
-  effect.initField().then(_ => animate());
+  effect.initField().then(_ => {
+    animate();
+    changeFloor(effect.pokemonIndex % effect.pokemons.length);
+  });
 })
 
 section.addEventListener('mouseout', () => {
+  resetFloor(effect.pokemonIndex % effect.pokemons.length);
   setTimeout(() => {
     isRun = false;
     effect.reset();
   }, 500)
 })
-
 
 
 
