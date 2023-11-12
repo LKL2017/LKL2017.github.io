@@ -8,24 +8,97 @@
     position: absolute;
     width: 100%;
     height: 100%;
+    display: flex;
+}
+
+.container nav {
+    position: relative;
+    height: max-content;
+    margin: 240px 0 0 100px;
+    padding-right: 1rem;
+    border-right: 8px solid #eee;
+    flex: 0 0 200px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.container nav::before {
+    position: absolute;
+    z-index: -10;
+    content: '';
+    border-radius: 50%;
+    background: #0018da;
+    opacity: 0.4;
+    width: 100px;
+    height: 100px;
+    transform: translate(-50%, -50%);
+}
+
+.container nav::after {
+    --short-side: 60px;
+    position: absolute;
+    z-index: -11;
+    content: '';
+    border: var(--short-side) solid transparent;
+    border-bottom: calc(var(--short-side) * 1.414) solid #dac41f;
+    opacity: 0.6;
+    top: 0;
+    transform: translate(-10%, -50%);
+}
+
+.container nav .name {
+    font-size: 36px;
+}
+
+.container nav ul {
+    list-style: none;
+}
+
+.container nav ul li {
+    width: max-content;
+    margin: 0.5rem 0;
+}
+
+.container a {
+    color: black;
+    text-decoration: none;
+}
+
+.container > section {
+    flex: 1 0 auto;
+}
+
+section .github-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 2rem;
+}
+
+section .github-icon img {
+    width: 100%;
+}
+
+.content {
+    width: 600px;
+    height: 600px;
 }
 
 .floor {
-    background: black;
     overflow: hidden;
 }
 
 .floor::after {
-    display: block;
-    background: linear-gradient(180deg, #676d55 0, #5f6b52 8.33%, #56684f 16.67%, #4c654b 25%, #406249 33.33%, #325e46 41.67%, #1f5944 50%, #005443 58.33%, #005044 66.67%, #004c46 75%, #004849 83.33%, #00454c 91.67%, #004250 100%);;
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transform: scale(2);
-    transform-origin: center;
-    transition: all linear 0.5s;
-    animation: 6s bg-movement alternate infinite;
+    /*display: block;*/
+    /*background: linear-gradient(180deg, #676d55 0, #5f6b52 8.33%, #56684f 16.67%, #4c654b 25%, #406249 33.33%, #325e46 41.67%, #1f5944 50%, #005443 58.33%, #005044 66.67%, #004c46 75%, #004849 83.33%, #00454c 91.67%, #004250 100%);;*/
+    /*content: '';*/
+    /*position: absolute;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*transform: scale(2);*/
+    /*transform-origin: center;*/
+    /*transition: all linear 0.5s;*/
+    /*animation: 6s bg-movement alternate infinite;*/
 }
 
 .floor.grass::after, .floor.flame::after, .floor.stream::after {
@@ -39,40 +112,6 @@
     to {
         transform: scale(2) translateY(20%);
     }
-}
-
-.info a {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    width: 2rem;
-}
-
-.info a img{
-    width: 100%;
-}
-
-.info {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-@media (max-width: 600px) {
-    .info {
-        flex-flow: column nowrap;
-    }
-}
-
-.info > section {
-    position: relative;
-    width: min(460px, 30%);
-    height: 60%;
-    background-color: black;
-    cursor: pointer;
-    overflow: hidden;
-    transition: ease 0.3s;
-    border: 1px solid #444;
 }
 
 .info > .text-section:hover {
@@ -114,8 +153,7 @@
     transform: rotate(-50deg) translateX(20%);
 }
 
-.info section .title {
-    color: azure;
+.info .text-section .title {
     font-size: 1.5rem;
     font-weight: bold;
     letter-spacing: 4px;

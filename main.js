@@ -1,7 +1,7 @@
 const canvas = document.querySelector('#scene');
 const ctx = canvas.getContext('2d', { willReadFrequently: true});
-const section = document.querySelector('.container > .effect-section');
-const rect = section.getBoundingClientRect();
+const canvasContainer = document.querySelector('.canvas-content');
+const rect = canvasContainer.getBoundingClientRect();
 canvas.width = rect.width;
 canvas.height = rect.height;
 
@@ -160,12 +160,12 @@ function resetFloor(index) {
 }
 
 window.addEventListener('resize', () => {
-  const rect = document.querySelector('.container > .effect-section').getBoundingClientRect();
+  const rect = document.querySelector('.canvas-content').getBoundingClientRect();
   canvas.width = rect.width;
   canvas.height = rect.height;
 })
 
-section.addEventListener('mouseenter', () => {
+canvasContainer.addEventListener('mouseenter', () => {
   isRun = true;
   effect.initField().then(_ => {
     animate();
@@ -173,7 +173,7 @@ section.addEventListener('mouseenter', () => {
   });
 })
 
-section.addEventListener('mouseout', () => {
+canvasContainer.addEventListener('mouseout', () => {
   resetFloor(effect.pokemonIndex % effect.pokemons.length);
   setTimeout(() => {
     isRun = false;
@@ -182,4 +182,15 @@ section.addEventListener('mouseout', () => {
 })
 
 
+const ul = document.querySelector('.container nav ul');
+ul.addEventListener('click', event => {
+  if (event.target.tagName.toLowerCase() === 'a') {
+    setVisibility(Number(event.target.dataset.index))
+  }
+}, false)
 
+const contents = [...document.querySelectorAll('section > div').values()];
+function setVisibility(currentIndex) {
+  contents.forEach(v => v.style.visibility = 'hidden');
+  contents.find((_, index) => index === currentIndex).style.visibility = 'visible';
+}
