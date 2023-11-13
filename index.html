@@ -9,51 +9,57 @@
     <title>LKL</title>
 </head>
 <body>
-    <div class="container floor">
-    </div>
     <div class="container">
         <nav>
             <div class="name">Kunlin Li</div>
             <ul>
-                <li><a href="#" data-index="0">About Me</a></li>
-                <li><a href="#" data-index="1">Have Fun</a></li>
-                <li><a href="#" data-index="2">Contact</a></li>
+                <li><a href="#about" class="active">About Me</a></li>
+                <li><a href="#fun">Have Fun</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
         <section>
-            <div class="content order-1">
-                <article>
-                    <h3>About Me</h3>
-                    <p>Hi there!</p>
-                    <p>My name is kunlin li, and have been a full-time frontend developer for about 5 years.</p>
+            <div class="router-view">
+                <div class="content_about">
+                    <article>
+                        <p>Hi there!</p>
+                        <p>My name is <b>Kunlin Li</b>, and have been as a full-time frontend developer for about 5 years.</p>
+                        <p>
+                            In my past jobs, I usually processed kinds of tasks about toB project, have many experience on
+                            communicating with upstream and downstream colleagues and finding out the user demand, and thus finding
+                            the final solution.
+                        </p>
+                        <p>
+                            I'm familiar with the modern necessary knowledge about frontend, such as HTML, CSS, JavaScript,
+                            TypeScript, Vue, Angular and more. Since we need do some co-working frequently, network and
+                            some backend knowledge are also in my brain.
+                        </p>
+                        <p>
+                            Besides, cause the experience of pixi.js, paper.js, things which are related to code will interest me.
+                            I think it can take more possibilities to frontend and make your websites more attractive. Therefore,
+                            CSS Animation, Canvas Animation and related knowledge are something I'm going deep into recently.
+                        </p>
+                    </article>
+                </div>
+                <div class="content_fun" style="display: none">
+                    <canvas id="scene"></canvas>
+                </div>
+                <div class="content_contact" style="display: none">
                     <p>
-                        In my past jobs, I usually processed kinds of tasks about toB project, have many experience on
-                        communicating with upstream and downstream colleagues and finding out the user demand, and thus finding
-                        the final solution.
+                        <b>email</b>
+                        <span>scu2018lkl@gmail.com</span>
                     </p>
                     <p>
-                        I'm familiar with the modern necessary knowledge about frontend, such as HTML, CSS, JavaScript,
-                        TypeScript, Vue, Angular and more. Since we need do some co-working frequently, network and
-                        some backend knowledge are also in my brain.
+                        <b>github</b>
+                        <span>github.com/LKL2017</span>
                     </p>
-                    <p>
-                        Besides, cause the experience of pixi.js, paper.js, things which are related to code will interest me.
-                        I think it can take more possibilities to frontend and make your websites more attractive. So, CSS Animation,
-                        Canvas Animation and related knowledge are something I'm going deep into recently.
-                    </p>
-                </article>
-            </div>
-            <div class="content order-2 canvas-content">
-                <canvas id="scene"></canvas>
-            </div>
-            <div class="content order-3">
-                Contact
+                    <i>Glad to talk to you</i>
+                </div>
             </div>
             <a class="github-icon" href="https://github.com/LKL2017" target="_blank">
                 <img src="assets/icon/github-mark.svg" alt="">
             </a>
         </section>
-
     </div>
     <script src="main.js"></script>
 </body>

@@ -6,6 +6,7 @@
 
 .container {
     position: absolute;
+    padding: 0 calc((100% - 940px) / 2);
     width: 100%;
     height: 100%;
     display: flex;
@@ -24,7 +25,7 @@
 
 .container nav::before {
     position: absolute;
-    z-index: -10;
+    z-index: -1;
     content: '';
     border-radius: 50%;
     background: #0018da;
@@ -37,7 +38,7 @@
 .container nav::after {
     --short-side: 60px;
     position: absolute;
-    z-index: -11;
+    z-index: -2;
     content: '';
     border: var(--short-side) solid transparent;
     border-bottom: calc(var(--short-side) * 1.414) solid #dac41f;
@@ -57,6 +58,15 @@
 .container nav ul li {
     width: max-content;
     margin: 0.5rem 0;
+}
+
+.container nav ul li > a:hover {
+    color: mediumpurple;
+    opacity: 0.5;
+}
+
+.container nav ul li > a.active {
+    color: mediumpurple;
 }
 
 .container a {
@@ -79,89 +89,15 @@ section .github-icon img {
     width: 100%;
 }
 
-.content {
+.router-view {
     width: 600px;
     height: 600px;
+    margin: 2rem;
+    position: relative;
+    top: 160px;
 }
 
-.floor {
-    overflow: hidden;
-}
-
-.floor::after {
-    /*display: block;*/
-    /*background: linear-gradient(180deg, #676d55 0, #5f6b52 8.33%, #56684f 16.67%, #4c654b 25%, #406249 33.33%, #325e46 41.67%, #1f5944 50%, #005443 58.33%, #005044 66.67%, #004c46 75%, #004849 83.33%, #00454c 91.67%, #004250 100%);;*/
-    /*content: '';*/
-    /*position: absolute;*/
-    /*width: 100%;*/
-    /*height: 100%;*/
-    /*transform: scale(2);*/
-    /*transform-origin: center;*/
-    /*transition: all linear 0.5s;*/
-    /*animation: 6s bg-movement alternate infinite;*/
-}
-
-.floor.grass::after, .floor.flame::after, .floor.stream::after {
-    opacity: 0;
-}
-
-@keyframes bg-movement {
-    from {
-        transform: scale(2) translateY(-20%);
-    }
-    to {
-        transform: scale(2) translateY(20%);
-    }
-}
-
-.info > .text-section:hover {
-    animation:
-        2s init-wave,
-        3s loop-waves 2s alternate infinite;
-    box-shadow: aquamarine 0 0 10px 4px ;
-}
-
-@keyframes init-wave {
-    to {
-        transform: perspective(600px) rotate3d(0, 1, 0, 10deg);
-    }
-}
-@keyframes loop-waves {
-    from {
-        transform: perspective(600px) rotate3d(0, 1, 0, 10deg);
-    }
-    to {
-        transform: perspective(600px) rotate3d(0, 1, 0, -10deg);
-    }
-}
-
-.info > .text-section::after {
-    position: absolute;
-    left: 0;
-    top: 0;
-    content: '';
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    transform: rotate(-50deg) translateX(40%);
-    transform-origin: top left;
-    transition: all ease-in 0.3s;
-}
-
-.info > .text-section:hover::after {
-    background: rgba(255, 255, 255, 0.2);
-    transform: rotate(-50deg) translateX(20%);
-}
-
-.info .text-section .title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    letter-spacing: 4px;
-    text-align: center;
-    padding: 0.5rem;
-}
-
-.info .effect-section::before {
+.content_fun::before {
     display: block;
     content: '';
     position: absolute;
@@ -169,15 +105,15 @@ section .github-icon img {
     top: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(#e59867 25% , #95e07b 66%, #51c5da);
+    background: linear-gradient(mediumpurple, rebeccapurple);
     transition: ease-in 0.5s;
 }
 
-.info .effect-section:hover::before {
+.content_fun:hover::before {
     opacity: 0;
 }
 
-.info .effect-section::after {
+.content_fun::after {
     display: block;
     content: 'Who am I?';
     position: absolute;
@@ -191,6 +127,36 @@ section .github-icon img {
     transition: ease-in 0.5s;
 }
 
-.info .effect-section:hover::after {
+.content_fun:hover::after {
     opacity: 0;
+}
+
+
+/* #about */
+article p:nth-of-type(1):first-letter {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: mediumpurple;
+}
+
+/*contact*/
+.content_contact p {
+    font-size: 1.5rem;
+    line-height: 3rem;
+}
+
+.content_contact p b {
+    display: inline-block;
+    width: 6ch;
+}
+
+.content_contact p span {
+    color: transparent;
+    background: linear-gradient(60deg, #dac41f, mediumpurple);
+    -webkit-background-clip: text;
+}
+
+.content_contact i {
+    color: #aaa;
 }

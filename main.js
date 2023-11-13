@@ -1,6 +1,6 @@
 const canvas = document.querySelector('#scene');
 const ctx = canvas.getContext('2d', { willReadFrequently: true});
-const canvasContainer = document.querySelector('.canvas-content');
+const canvasContainer = document.querySelector('.router-view');
 const rect = canvasContainer.getBoundingClientRect();
 canvas.width = rect.width;
 canvas.height = rect.height;
@@ -149,48 +149,41 @@ function animate() {
   requestAnimationFrame(animate);
 }
 
-const floor = document.querySelector('.container.floor');
-const floorClasses = ['grass', 'flame', 'stream'];
-function changeFloor(index) {
-  if ([...floor.classList].some(name => floorClasses.indexOf(name) !== -1)) return;
-  floor.classList.add(floorClasses[index]);
-}
-function resetFloor(index) {
-  floor.classList.remove(floorClasses[index])
-}
-
-window.addEventListener('resize', () => {
-  const rect = document.querySelector('.canvas-content').getBoundingClientRect();
-  canvas.width = rect.width;
-  canvas.height = rect.height;
-})
-
 canvasContainer.addEventListener('mouseenter', () => {
   isRun = true;
   effect.initField().then(_ => {
     animate();
-    changeFloor(effect.pokemonIndex % effect.pokemons.length);
   });
 })
 
 canvasContainer.addEventListener('mouseout', () => {
-  resetFloor(effect.pokemonIndex % effect.pokemons.length);
   setTimeout(() => {
     isRun = false;
     effect.reset();
   }, 500)
 })
 
+window.addEventListener('resize', () => {
+  const rect = document.querySelector('.router-view').getBoundingClientRect();
+  canvas.width = rect.width;
+  canvas.height = rect.height;
+})
 
-const ul = document.querySelector('.container nav ul');
-ul.addEventListener('click', event => {
-  if (event.target.tagName.toLowerCase() === 'a') {
-    setVisibility(Number(event.target.dataset.index))
-  }
-}, false)
+window.addEventListener('hashchange', event => {
+  const contents = [...document.querySelectorAll('.router-view > div')];
+  const currentHash = location.hash;
+  contents.forEach(v => {
+    const classList = v.classList;
+    v.style.display = classList.contains(`content_${currentHash.slice(1)}`) ? 'block' : 'none';
+  })
 
-const contents = [...document.querySelectorAll('section > div').values()];
-function setVisibility(currentIndex) {
-  contents.forEach(v => v.style.visibility = 'hidden');
-  contents.find((_, index) => index === currentIndex).style.visibility = 'visible';
-}
+  const anchors = [...document.querySelectorAll('nav ul li > a')];
+  anchors.forEach(v => {
+    const classList = v.classList;
+    if (v.getAttribute('href') === currentHash) {
+      classList.add('active')
+    } else {
+      classList.remove('active')
+    }
+  })
+})
