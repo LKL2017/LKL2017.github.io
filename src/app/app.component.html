@@ -1,26 +1,13 @@
 <section class="container" [ngClass]="{'container-web-lg': isMqlLarge, 'container-web-sm': isMqlSmall }">
-  <mat-grid-list [cols]="4">
-    <mat-grid-tile [colspan]="1">
-      <ng-container *ngTemplateOutlet="logo"></ng-container>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="3" [rowspan]="3">
-      <ng-container *ngTemplateOutlet="content"></ng-container>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="2">
-      <ng-container *ngTemplateOutlet="tab"></ng-container>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <div class="side">
+    <div class="logo">KunLin</div>
+    <nav>
+      @for (anchor of navAnchors; track anchor) {
+        <a mat-button [href]="anchor.path">{{ anchor.label }}</a>
+      }
+    </nav>
+  </div>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
 </section>
-
-
-<ng-template #logo>
-  <div class="logo"><b>KunLin</b></div>
-</ng-template>
-
-<ng-template #content>
-  <router-outlet></router-outlet>
-</ng-template>
-
-<ng-template #tab>
-  <mat-tab-group></mat-tab-group>
-</ng-template>

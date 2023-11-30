@@ -14,6 +14,12 @@ export class AppComponent implements OnDestroy {
   isMqlLarge = true;
   isMqlSmall = false;
 
+  navAnchors = [
+    { path: '#about', label: 'About Me'},
+    { path: '#gallery', label: 'Gallery'},
+    { path: '#contact', label: 'Contact'},
+  ]
+
   constructor(breakpointObserver: BreakpointObserver) {
     this.subBreakPoint(breakpointObserver);
   }
