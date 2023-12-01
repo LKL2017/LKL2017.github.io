@@ -1,1 +1,25 @@
-<p>gallery works!</p>
+<h3>Below are some creative coding examples by p5.js or vanilla javascript, and you can find detail here.</h3>
+
+<section class="card-container">
+  @for (work of works; track work) {
+    <mat-card class="card-item">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{ work.title }}</mat-card-title>
+        <mat-card-subtitle>{{ work.subTitle }}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>
+          {{ work.description }}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+      </mat-card-actions>
+    </mat-card>
+  }
+</section>
+
+
