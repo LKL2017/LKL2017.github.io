@@ -1,3 +1,7 @@
+:host {
+  --text-color: #dad9c6;
+}
+
 .container-web-lg {
   margin: 0 20%;
 }
@@ -9,6 +13,7 @@
 .container {
   display: flex;
   padding-top: 8rem;
+  color: var(--text-color);
 
   .side {
     flex: 0 0 200px;
@@ -25,13 +30,14 @@
   --short-side: 60px;
   position: relative;
   font-size: 32px;
+  z-index: 10;
 
   &::before {
     position: absolute;
     z-index: -1;
     content: '';
     border-radius: 50%;
-    background: #0018da;
+    background: #5518da;
     opacity: 0.4;
     width: 100px;
     height: 100px;
@@ -43,16 +49,15 @@
     content: '';
     border: var(--short-side) solid transparent;
     border-bottom: calc(var(--short-side) * 1.414) solid #dac41f;
-    opacity: 0.6;
+    opacity: 0.8;
     top: 0;
     transform: translate(-3em, -50%);
   }
 }
 
-
-
 a {
   position: relative;
+  color: var(--text-color) !important;
 
   &::after {
     display: block;
@@ -71,4 +76,14 @@ a {
   &.active::after {
     transform: scaleY(1);
   }
+}
+
+canvas {
+  position: absolute;
+  z-index: -10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
 }

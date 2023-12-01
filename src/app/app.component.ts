@@ -1,13 +1,16 @@
 import {BreakpointObserver, Breakpoints, BreakpointState} from "@angular/cdk/layout";
-import {Component, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, ViewChild, AfterViewInit, ElementRef} from '@angular/core';
 import {Subject, takeUntil} from "rxjs";
+import {Effect} from "../util/effect";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less']
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent implements AfterViewInit, OnDestroy {
+  @ViewChild('scene') canvasEl!: ElementRef;
+
   title = 'PersonalHomepage';
   destroy$ = new Subject<void>();
 
@@ -38,6 +41,25 @@ export class AppComponent implements OnDestroy {
       })
 
   }
+
+  ngAfterViewInit() {
+    const canvas = this.canvasEl.nativeElement;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const context = canvas.getContext('2d');
+    const effect = new Effect(context, window.innerWidth, window.innerHeight);
+    effect.init();
+
+    function animate() {
+      effect.update();
+      effect.render();
+      requestAnimationFrame(animate);
+    }
+
+
+    animate();
+  }
+
 
   ngOnDestroy() {
     this.destroy$.next();
