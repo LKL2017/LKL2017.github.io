@@ -20,6 +20,10 @@ export class AppComponent implements OnDestroy {
     { path: '#contact', label: 'Contact'},
   ]
 
+  get currentPath(): string {
+    return '#' + location.hash.slice(2);
+  }
+
   constructor(breakpointObserver: BreakpointObserver) {
     this.subBreakPoint(breakpointObserver);
   }

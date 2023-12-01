@@ -3,7 +3,7 @@
     <div class="logo">KunLin</div>
     <nav>
       @for (anchor of navAnchors; track anchor) {
-        <a mat-button [href]="anchor.path">{{ anchor.label }}</a>
+        <a mat-button [href]="anchor.path" [ngClass]="{active: anchor.path === currentPath}">{{ anchor.label }}</a>
       }
     </nav>
   </div>

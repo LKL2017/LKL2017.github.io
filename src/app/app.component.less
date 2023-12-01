@@ -48,3 +48,27 @@
     transform: translate(-3em, -50%);
   }
 }
+
+
+
+a {
+  position: relative;
+
+  &::after {
+    display: block;
+    content: '';
+    position: absolute;
+    right: -2px;
+    width: 4px;
+    height: 100%;
+    opacity: 0.8;
+    background: linear-gradient(60deg, #dac41f, #5518da);
+    transition: all ease-in 0.2s;
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+
+  &.active::after {
+    transform: scaleY(1);
+  }
+}
