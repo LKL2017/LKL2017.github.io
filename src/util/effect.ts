@@ -1,11 +1,19 @@
 import {Particle} from "./particle";
 
+interface FieldRowItem {
+  angle: number
+}
+type FieldArr = FieldRowItem[][];
+
+
 export class Effect {
   context: CanvasRenderingContext2D;
   width: number;
   height: number;
   particles: Particle[] = [];
-  numOfParticles = 1;
+  numOfParticles = 40;
+  gap = 20;
+  fieldArr: FieldArr = [];
 
   constructor(context: CanvasRenderingContext2D, width: number, height: number) {
     this.context = context;
@@ -16,8 +24,28 @@ export class Effect {
   init() {
     this.context.strokeStyle = 'yellow';
     this.context.fillStyle = 'black';
-    this.context.globalAlpha = 0.5;
-    this.particles = new Array(this.numOfParticles).fill(new Particle(this));
+    // this.context.globalAlpha = 0.5;
+    this.fieldArr = this.genFieldArr();
+    this.particles = new Array(this.numOfParticles).fill('').map(_ => {
+      return new Particle(this);
+    });
+  }
+
+  genFieldArr(): FieldArr {
+    let fieldArr = [];
+    let angle = 0;
+    let angleStep = 0.1;
+    for (let y = 0; y < this.height; y += this.gap) {
+      let row = [];
+      for (let x = 0; x < this.width; x += this.gap) {
+        row.push({
+          angle,
+        });
+        angle += angleStep;
+      }
+      fieldArr.push(row);
+    }
+    return fieldArr;
   }
 
   update() {
