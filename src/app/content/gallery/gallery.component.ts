@@ -20,9 +20,9 @@ interface GalleryWork {
 export class GalleryComponent {
 
   works: GalleryWork[] = [
-    { title: 'effect.ts', subTitle: 'p5.js', previewSrc: '', description: new Array(20).fill('TEST').join(' ') },
-    { title: 'effect.ts', subTitle: 'vanilla', previewSrc: '', description: new Array(30).fill('TEST').join(' ') },
-    { title: 'effect.ts', subTitle: 'p5.js', previewSrc: '', description: new Array(40).fill('TEST').join(' ') },
+    { title: 'Harmonic Motion', subTitle: 'p5.js', previewSrc: '', description: 'Lines, dots wave obey the sine and cosine function, or combined with multi functions.' },
+    { title: 'Gravity', subTitle: 'p5.js', previewSrc: '', description: 'Simulate the gravity, and it blows my mind to see universe or microscopic particles.' },
+    { title: 'Dancing Pixels', subTitle: 'p5.js', previewSrc: '', description: 'Many pixels are dancing on the ground, forward and backward, gathering and unraveling, even consist of the image.' },
   ];
 
   constructor() {

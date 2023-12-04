@@ -1,6 +1,6 @@
 import {BreakpointObserver, Breakpoints, BreakpointState} from "@angular/cdk/layout";
 import {Component, OnDestroy, ViewChild, AfterViewInit, ElementRef} from '@angular/core';
-import {Subject, takeUntil} from "rxjs";
+import {debounceTime, fromEvent, Subject, takeUntil} from "rxjs";
 import {Effect} from "../util/effect";
 
 @Component({
@@ -56,10 +56,14 @@ export class AppComponent implements AfterViewInit, OnDestroy {
       requestAnimationFrame(animate);
     }
 
-
     animate();
-  }
 
+    fromEvent(window, 'resize')
+      .pipe(debounceTime(500), takeUntil(this.destroy$))
+      .subscribe(_ => {
+        effect.resize(window.innerWidth, window.innerHeight);
+      })
+  }
 
   ngOnDestroy() {
     this.destroy$.next();
