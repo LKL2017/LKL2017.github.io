@@ -1,12 +1,15 @@
 import {BreakpointObserver, Breakpoints, BreakpointState} from "@angular/cdk/layout";
 import {Component, OnDestroy, ViewChild, AfterViewInit, ElementRef} from '@angular/core';
+import {ChildrenOutletContexts} from "@angular/router";
 import {debounceTime, fromEvent, Subject, takeUntil} from "rxjs";
+import {routerAnimation} from "../animation/router-animation";
 import {Effect} from "../util/effect";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.less']
+  styleUrls: ['./app.component.less'],
+  animations: [routerAnimation]
 })
 export class AppComponent implements AfterViewInit, OnDestroy {
   @ViewChild('scene') canvasEl!: ElementRef;
@@ -27,7 +30,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     return '#' + location.hash.slice(2);
   }
 
-  constructor(breakpointObserver: BreakpointObserver) {
+  constructor(breakpointObserver: BreakpointObserver, private childrenOutletContexts: ChildrenOutletContexts) {
     this.subBreakPoint(breakpointObserver);
   }
 
@@ -68,5 +71,9 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  getRouteAnimationData() {
+    return this.childrenOutletContexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
   }
 }

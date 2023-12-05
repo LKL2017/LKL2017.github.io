@@ -6,9 +6,9 @@ import { GalleryComponent } from "./content/gallery/gallery.component";
 import { ContactComponent} from "./content/contact/contact.component";
 
 const routes: Routes = [
-  { path: 'about', component: AboutComponent },
-  { path: 'gallery', component: GalleryComponent },
-  { path: 'contact', component: ContactComponent}
+  { path: 'about', component: AboutComponent, data: { animation: 'AboutPage'}},
+  { path: 'gallery', component: GalleryComponent, data: { animation: 'GalleryPage'} },
+  { path: 'contact', component: ContactComponent, data: { animation: 'ContactPage'}}
 ];
 
 @NgModule({
