@@ -8,7 +8,7 @@ import {Effect} from "../util/effect";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.less'],
+  styleUrls: ['./app.component.scss'],
   animations: [routerAnimation]
 })
 export class AppComponent implements AfterViewInit, OnDestroy {

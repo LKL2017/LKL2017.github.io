@@ -13,7 +13,7 @@ interface GalleryWork {
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
-  styleUrl: './gallery.component.less',
+  styleUrl: './gallery.component.scss',
   standalone: true,
   imports: [CommonModule, MatCardModule, MatButtonModule]
 })

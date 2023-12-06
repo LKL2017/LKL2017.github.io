@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
-  styleUrl: './about.component.less',
+  styleUrl: './about.component.scss',
   standalone: true,
   imports: [CommonModule]
 })
