@@ -18,18 +18,18 @@ export const routerAnimation = trigger('routerAnimations',[
     ], { optional: true }),
     group([
       query(':enter', [
-        animate('1000ms ease-out', style({
+        animate('400ms ease-out', style({
           transform: 'none',
         }))
       ], { optional: true }),
       query(':leave', [
-        animate('1000ms ease-out', style({
+        animate('400ms ease-out', style({
           transform: 'translateX(100%)',
           opacity: 0
         }))
       ], { optional: true }),
       query(':self', [
-        animate('1000ms ease', style({
+        animate('400ms ease', style({
           height: '*',
         })),
       ], { optional: true }),

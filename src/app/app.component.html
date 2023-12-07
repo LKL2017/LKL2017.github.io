@@ -1,10 +1,10 @@
 <canvas #scene></canvas>
-<section class="container" [ngClass]="{'container-web-lg': isMqlLarge, 'container-web-sm': isMqlSmall }">
+<section class="container" [ngClass]="{'container-lg': isMqlLarge, 'container-sm': isMqlSmall }">
   <div class="side">
-    <div class="logo">KunLin</div>
+    <div class="logo" [ngClass]="{sm: isMqlSmall}">KunLin</div>
     <nav>
       @for (anchor of navAnchors; track anchor) {
-        <a mat-button [href]="anchor.path" [ngClass]="{active: anchor.path === currentPath}">{{ anchor.label }}</a>
+        <a mat-button [href]="anchor.path" [ngClass]="{active: anchor.path === currentPath, 'sm': isMqlSmall}">{{ anchor.label }}</a>
       }
     </nav>
   </div>

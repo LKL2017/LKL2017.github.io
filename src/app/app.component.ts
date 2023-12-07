@@ -59,7 +59,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
       requestAnimationFrame(animate);
     }
 
-    animate();
+    // animate();
 
     fromEvent(window, 'resize')
       .pipe(debounceTime(500), takeUntil(this.destroy$))

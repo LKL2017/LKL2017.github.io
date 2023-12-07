@@ -1,10 +1,5 @@
-.container-web-lg {
-  margin: 0 20%;
-}
-
-.container-web-sm {
-  background-color: #dac41f;
-}
+$logo-size: 60px;
+$logo-size-sm: 16px;
 
 .container {
   display: flex;
@@ -23,10 +18,22 @@
   }
 }
 
+.container-lg {
+  margin: 0 15%;
+}
+
+.container-sm {
+  display: block;
+  padding: 0;
+  .side {
+    padding: 1rem;
+  }
+}
+
 .logo {
-  --short-side: 60px;
   position: relative;
-  font-size: 32px;
+  font-size: 2rem;
+  line-height: 1;
   z-index: 10;
 
   &::before {
@@ -36,20 +43,34 @@
     border-radius: 50%;
     background: #5518da;
     opacity: 0.4;
-    width: 100px;
-    height: 100px;
+    width: $logo-size * 1.5;
+    height: $logo-size * 1.5;
     transform: translate(-1rem, -50%);
   }
   &::after {
     position: absolute;
     z-index: -2;
     content: '';
-    border: var(--short-side) solid transparent;
-    border-bottom: calc(var(--short-side) * 1.414) solid #dac41f;
+    border: $logo-size solid transparent;
+    border-bottom: $logo-size * 1.732 solid #dac41f;
     opacity: 0.8;
     top: 0;
     transform: translate(-3em, -50%);
   }
+
+  &.sm::before {
+    width: $logo-size-sm * 1.5;
+    height: $logo-size-sm * 1.5;
+    transform: translate(1ch, 24%);
+    opacity: 1;
+  }
+
+  &.sm::after {
+    border-width: $logo-size-sm;
+    transform: translate(-2ch, 50%);
+    opacity: 1;
+  }
+
 }
 
 a {
@@ -72,6 +93,20 @@ a {
   &.active::after {
     transform: scaleY(1);
   }
+
+  &.sm::after {
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 4px;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  &.sm.active::after {
+    transform: scaleX(1);
+  }
+
 }
 
 canvas {
