@@ -70,13 +70,13 @@ export class Particle {
     this.y = newY;
 
     // set style
-    this.context.lineWidth = 4;
-    this.context.strokeStyle = 'yellow';
+    // ~
   }
 
   draw() {
     this.context.beginPath();
 
+    // show as lines
     for (let i = 0; i < this.points.length; i++) {
       const point = this.points[i];
       if (i === 0) {
@@ -85,6 +85,13 @@ export class Particle {
         this.context.lineTo(point.x, point.y);
       }
     }
+
+    // show as rect
+    // for (let i = 0; i < this.points.length; i += 2) {
+    //   const point = this.points[i];
+    //   this.context.arc(point.x, point.y, 20, 0, Math.PI / 2);
+    // }
+
     this.context.stroke();
   }
 }

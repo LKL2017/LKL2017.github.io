@@ -53,13 +53,14 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     const effect = new Effect(context, window.innerWidth, window.innerHeight);
     effect.init();
 
+
     function animate() {
       effect.update();
       effect.render();
       requestAnimationFrame(animate);
     }
 
-    // animate();
+    animate();
 
     fromEvent(window, 'resize')
       .pipe(debounceTime(500), takeUntil(this.destroy$))
