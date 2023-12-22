@@ -11,7 +11,7 @@ export class Effect {
   width: number;
   height: number;
   particles: Particle[] = [];
-  numOfParticles = 140;
+  numOfParticles = 100;
   gap = 40;
   fieldArr: FieldArr = [];
 
