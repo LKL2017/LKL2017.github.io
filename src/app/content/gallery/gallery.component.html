@@ -7,15 +7,15 @@
         <mat-card-title>{{ work.title }}</mat-card-title>
 <!--        <mat-card-subtitle>{{ work.subTitle }}</mat-card-subtitle>-->
       </mat-card-header>
-      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+      <img mat-card-image [src]="work.previewSrc" alt="Photo of a Shiba Inu">
       <mat-card-content>
         <p>
           {{ work.description }}
         </p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button color="primary">Detail</button>
-        <button mat-raised-button color="primary" disabled>CodePen</button>
+<!--        <button mat-raised-button color="primary">Detail</button>-->
+<!--        <button mat-raised-button color="primary" disabled>CodePen</button>-->
       </mat-card-actions>
     </mat-card>
   }
