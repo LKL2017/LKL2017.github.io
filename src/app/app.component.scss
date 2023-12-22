@@ -47,27 +47,11 @@ $logo-size-sm: 16px;
     height: $logo-size * 1.5;
     transform: translate(-1rem, -50%);
   }
-  &::after {
-    position: absolute;
-    z-index: -2;
-    content: '';
-    border: $logo-size solid transparent;
-    border-bottom: $logo-size * 1.732 solid #dac41f;
-    opacity: 0.8;
-    top: 0;
-    transform: translate(-3em, -50%);
-  }
 
   &.sm::before {
     width: $logo-size-sm * 1.5;
     height: $logo-size-sm * 1.5;
     transform: translate(1ch, 24%);
-    opacity: 1;
-  }
-
-  &.sm::after {
-    border-width: $logo-size-sm;
-    transform: translate(-2ch, 50%);
     opacity: 1;
   }
 
